@@ -1,0 +1,3 @@
+# SOPS age private key - NUNCA commitear
+*.agekey
+CLAUDE.md
