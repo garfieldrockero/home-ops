@@ -32,3 +32,6 @@ spec:
       size: 10Gi
     service:
       type: LoadBalancer
+      annotations:
+        metallb.universe.tf/address-pool: "${METALLB_POOL_HOME}"
+        metallb.universe.tf/loadBalancerIPs: "${OPENOBSERVE_LB_IP}"

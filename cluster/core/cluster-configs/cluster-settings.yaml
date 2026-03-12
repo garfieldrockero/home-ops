@@ -6,3 +6,5 @@ metadata:
   namespace: flux-system
 data:
   METALLB_RANGE_HOME: "192.168.11.55-192.168.11.60"
+  METALLB_POOL_HOME: "homepool"
+  OPENOBSERVE_LB_IP: "192.168.11.55"
