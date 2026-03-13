@@ -1,0 +1,19 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:recommended",
+    "docker:enableMajor",
+    "github>garfieldrockero/home-ops//.github/renovate/packageRules",
+    "github>garfieldrockero/home-ops//.github/renovate/groups",
+    "github>garfieldrockero/home-ops//.github/renovate/labels",
+    "github>garfieldrockero/home-ops//.github/renovate/customManagers"
+  ],
+  "configMigration": true,
+  "dependencyDashboard": true,
+  "dependencyDashboardTitle": "Renovate Dashboard 🤖",
+  "schedule": ["every 1 hour"],
+  "timezone": "Europe/Madrid",
+  "ignorePaths": [
+    "**/*.sops.*"
+  ]
+}

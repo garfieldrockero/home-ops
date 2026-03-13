@@ -1,0 +1,23 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "customManagers": [
+    {
+      "description": "Detect container images in Kubernetes manifests",
+      "customType": "regex",
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "matchStrings": [
+        "image:\\s+(?<depName>[^:]+):(?<currentValue>[^\\s]+)"
+      ],
+      "datasourceTemplate": "docker"
+    },
+    {
+      "description": "Detect Helm chart versions in HelmRelease manifests",
+      "customType": "regex",
+      "fileMatch": ["cluster/.+helm-release\\.ya?ml$"],
+      "matchStrings": [
+        "chart:\\s+(?<depName>[^\\n]+)\\n\\s+version:\\s+(?<currentValue>[^\\n]+)"
+      ],
+      "datasourceTemplate": "helm"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "packageRules": [
+    {
+      "description": "Loose versioning for non-semver packages",
+      "matchDatasources": ["docker"],
+      "versioning": "loose"
+    },
+    {
+      "description": "Require manual approval for all updates",
+      "matchUpdateTypes": ["major", "minor", "patch", "digest"],
+      "automerge": false
+    }
+  ]
+}
