@@ -16,6 +16,14 @@ _GitOps home Kubernetes cluster managed by Flux_
 
 This repository contains the declarative configuration for my home Kubernetes cluster running on k3s (Proxmox). All changes pushed to `main` are automatically reconciled by Flux v2.
 
+## Hardware
+
+| Role | Device | CPU | RAM | Storage |
+|------|--------|-----|-----|---------|
+| Master + Worker | Dell PowerEdge R720XD | 2x Xeon E5-2650L v2 | 32GB DDR3 ECC | 2x 2TB SAS |
+| Worker | Lenovo M910Q Tiny | Intel i5-7500T | 16GB DDR4 | — |
+| Worker | Chuwi Larkbox X 2023 | Intel N100 | 12GB LPDDR5 | — |
+
 ## Stack
 
 | Component | Description |
