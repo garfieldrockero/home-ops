@@ -4,15 +4,18 @@
     {
       "description": "Flux Group",
       "groupName": "Flux",
-      "matchPackagePatterns": ["flux"],
+      "matchPackagePatterns": ["flux", "fluxcd"],
       "matchDatasources": ["docker", "github-tags", "github-releases"],
-      "versioning": "semver"
+      "versioning": "semver",
+      "ignoreUnstable": true,
+      "separateMinorPatch": true
     },
     {
       "description": "MetalLB Group",
       "groupName": "MetalLB",
       "matchPackagePatterns": ["metallb"],
-      "matchDatasources": ["helm"]
+      "matchDatasources": ["helm"],
+      "ignoreUnstable": true
     }
   ]
 }
