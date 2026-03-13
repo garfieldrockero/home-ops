@@ -26,6 +26,7 @@ spec:
         runAsNonRoot: true
       containers:
         - name: openobserve
+          # renovate: depName=openobserve/openobserve datasource=github-releases
           image: o2cr.ai/openobserve/openobserve:v0.60.3
           env:
             - name: ZO_ROOT_USER_EMAIL
