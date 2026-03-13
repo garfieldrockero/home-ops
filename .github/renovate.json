@@ -3,17 +3,44 @@
   "extends": [
     "config:recommended",
     "docker:enableMajor",
-    "github>garfieldrockero/home-ops//.github/renovate/packageRules",
+    "helpers:pinGitHubActionDigests",
+    "replacements:k8s-registry-move",
+    ":disableRateLimiting",
+    ":dependencyDashboard",
+    ":semanticCommits",
+    ":skipStatusChecks",
+    ":timezone(Europe/Madrid)",
     "github>garfieldrockero/home-ops//.github/renovate/groups",
     "github>garfieldrockero/home-ops//.github/renovate/labels",
-    "github>garfieldrockero/home-ops//.github/renovate/customManagers"
+    "github>garfieldrockero/home-ops//.github/renovate/customManagers",
+    "github>garfieldrockero/home-ops//.github/renovate/packageRules"
   ],
   "configMigration": true,
   "dependencyDashboard": true,
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
-  "schedule": ["every 1 hour"],
-  "timezone": "Europe/Madrid",
+  "suppressNotifications": [
+    "prEditedNotification",
+    "prIgnoreNotification"
+  ],
+  "rebaseWhen": "auto",
+  "recreateWhen": "auto",
   "ignorePaths": [
-    "**/*.sops.*"
-  ]
+    "**/*.sops.*",
+    "**/.archive/**"
+  ],
+  "flux": {
+    "managerFilePatterns": [
+      "/(^|/)cluster/.+\\.ya?ml$/"
+    ]
+  },
+  "helm-values": {
+    "managerFilePatterns": [
+      "/(^|/)cluster/.+\\.ya?ml$/"
+    ]
+  },
+  "kubernetes": {
+    "managerFilePatterns": [
+      "/(^|/)cluster/.+\\.ya?ml$/"
+    ]
+  }
 }
