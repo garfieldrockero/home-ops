@@ -11,6 +11,15 @@
       "datasourceTemplate": "docker"
     },
     {
+      "description": "Detect images with renovate inline annotations (github-releases)",
+      "customType": "regex",
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*depName=(?<depName>[^\\s]+)\\s+datasource=(?<datasource>[^\\s]+)\\n\\s+image:\\s+[^:]+:(?<currentValue>[^\\s]+)"
+      ],
+      "datasourceTemplate": "{{datasource}}"
+    },
+    {
       "description": "Detect Helm chart versions in HelmRelease manifests",
       "customType": "regex",
       "fileMatch": ["cluster/.+helm-release\\.ya?ml$"],
