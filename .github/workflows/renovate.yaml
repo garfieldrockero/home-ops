@@ -36,6 +36,9 @@ env:
 jobs:
   renovate:
     name: Renovate
+    permissions:
+      contents: write
+      pull-requests: write
     runs-on: ubuntu-latest
     steps:
       - name: Generate Token
