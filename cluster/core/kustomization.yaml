@@ -4,3 +4,4 @@ resources:
   - namespaces
   - cluster-configs
   - metallb-system
+  - longhorn-system
