@@ -19,12 +19,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Trivy
-        uses: aquasecurity/setup-trivy@v0.2.0
-        with:
-          cache: true
-          version: v0.56.2
-
       - name: Run Trivy vulnerability scanner in IaC mode
         uses: aquasecurity/trivy-action@0.33.1
         continue-on-error: true
@@ -35,7 +29,6 @@ jobs:
           output: 'trivy-results.sarif'
           exit-code: '0'
           severity: 'CRITICAL,HIGH'
-          skip-setup-trivy: true
 
       - name: Upload Trivy scan results to GitHub Security tab
         if: always() && hashFiles('trivy-results.sarif') != ''
@@ -53,7 +46,6 @@ jobs:
           output: trivy.txt
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
-          skip-setup-trivy: true
 
       - name: Publish Trivy Output to Summary
         if: always()
