@@ -43,7 +43,6 @@ jobs:
           hide-progress: true
           output: trivy.txt
           severity: 'CRITICAL,HIGH'
-          skip-setup-trivy: true
 
       - name: Publish Trivy Output to Summary
         if: always()
