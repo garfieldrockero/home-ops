@@ -1,12 +1,12 @@
-name: build
-on:
+name: "Security: Trivy"
+on: # yamllint disable-line rule:truthy
   push:
     branches:
       - main
   pull_request:
 jobs:
-  build:
-    name: Build
+  trivy:
+    name: Trivy Scanner
     runs-on: ubuntu-24.04
     permissions:
       contents: read          # Required to checkout and read repo files
