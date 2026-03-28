@@ -4,7 +4,7 @@
     {
       "description": "Detect container images in Kubernetes manifests",
       "customType": "regex",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "fileMatch": ["cluster/(?!base/flux-system/).+\\.ya?ml$"],
       "matchStrings": [
         "image:\\s+(?<depName>[^:]+):(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
       ],
