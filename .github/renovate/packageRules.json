@@ -11,13 +11,7 @@
       "matchUpdateTypes": ["major", "minor", "patch", "digest"],
       "automerge": false
     },
-    {
-      "description": "Pin digests for Flux images in ghcr.io/fluxcd",
-      "matchPackagePatterns": ["^ghcr\\.io/fluxcd/"],
-      "matchDatasources": ["docker"],
-      "pinDigests": true
-    },
-    {
+{
       "description": "Ignore o2cr.ai registry (not accessible by Renovate)",
       "matchPackagePatterns": ["^o2cr\\.ai/"],
       "enabled": false
