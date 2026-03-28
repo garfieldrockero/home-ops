@@ -8,8 +8,7 @@
       "matchDatasources": ["docker", "github-tags", "github-releases"],
       "versioning": "semver",
       "ignoreUnstable": true,
-      "separateMinorPatch": true,
-      "pinDigests": true
+      "separateMinorPatch": true
     },
     {
       "description": "MetalLB Group",

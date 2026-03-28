@@ -9,6 +9,7 @@
     ":dependencyDashboard",
     ":semanticCommits",
     ":skipStatusChecks",
+    "docker:pinDigests",
     ":timezone(Europe/Madrid)",
     "github>garfieldrockero/home-ops//.github/renovate/groups",
     "github>garfieldrockero/home-ops//.github/renovate/labels",

@@ -11,7 +11,7 @@
       "matchUpdateTypes": ["major", "minor", "patch", "digest"],
       "automerge": false
     },
-{
+    {
       "description": "Ignore o2cr.ai registry (not accessible by Renovate)",
       "matchPackagePatterns": ["^o2cr\\.ai/"],
       "enabled": false
