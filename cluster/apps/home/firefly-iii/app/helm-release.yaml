@@ -80,4 +80,5 @@ spec:
       enabled: true
       fireflyiii:
         url: "http://firefly-iii"
-        vanityUrl: "http://192.168.11.56"
+      config:
+        existingSecret: firefly-iii-secrets
