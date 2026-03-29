@@ -21,32 +21,40 @@ spec:
   upgrade:
     remediation:
       retries: 3
+  postRenderers:
+    - kustomize:
+        patches:
+          - target:
+              kind: Service
+              name: firefly-iii
+            patch: |
+              - op: replace
+                path: /spec/type
+                value: LoadBalancer
+              - op: add
+                path: /metadata/annotations/metallb.universe.tf~1address-pool
+                value: "${METALLB_POOL_HOME}"
+              - op: add
+                path: /metadata/annotations/metallb.universe.tf~1loadBalancerIPs
+                value: "${FIREFLY_LB_IP}"
   values:
     firefly-db:
       enabled: true
-      global:
-        postgresql:
-          auth:
-            existingSecret: firefly-iii-secrets
-            secretKeys:
-              userPasswordKey: DB_PASSWORD
-              adminPasswordKey: DB_PASSWORD
-      persistence:
-        storage: 5Gi
-        storageClassName: longhorn
+      storage:
+        class: longhorn
+        dataSize: 5Gi
+      backup:
+        pvc:
+          class: longhorn
+      configs:
+        DBNAME: firefly
+        DBUSER: firefly
+        POSTGRES_USER: firefly
 
     firefly-iii:
       enabled: true
       config:
         existingSecret: firefly-iii-secrets
-      service:
-        type: LoadBalancer
-        annotations:
-          metallb.universe.tf/address-pool: "${METALLB_POOL_HOME}"
-          metallb.universe.tf/loadBalancerIPs: "${FIREFLY_LB_IP}"
-      persistence:
-        storageClassName: longhorn
-        storage: 2Gi
 
     importer:
       enabled: false
