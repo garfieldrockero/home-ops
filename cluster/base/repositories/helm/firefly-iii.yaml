@@ -1,0 +1,10 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: HelmRepository
+metadata:
+  name: firefly-iii-helm
+  namespace: flux-system
+spec:
+  interval: 6h
+  url: https://firefly-iii.github.io/kubernetes
+  timeout: 3m

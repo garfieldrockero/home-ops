@@ -32,6 +32,8 @@ This repository contains the declarative configuration for my home Kubernetes cl
 | [Flux v2](https://fluxcd.io/) | GitOps operator — watches this repo and applies changes |
 | [MetalLB](https://metallb.universe.tf/) | Bare-metal LoadBalancer |
 | [OpenObserve](https://openobserve.ai/) | Observability platform (logs, metrics, traces) |
+| [Longhorn](https://longhorn.io/) | Distributed block storage |
+| [Firefly III](https://www.firefly-iii.org/) | Personal finance manager |
 | [SOPS](https://github.com/getsops/sops) + [age](https://github.com/FiloSottile/age) | Secrets encryption |
 | [Renovate](https://renovatebot.com/) | Automated dependency updates via k9-renovate-bot |
 
@@ -49,10 +51,14 @@ cluster/
 ├── core/                    # Infrastructure services
 │   ├── cluster-configs/     # ConfigMap + SOPS-encrypted secrets
 │   ├── namespaces/          # Pre-created namespaces
-│   └── metallb-system/      # MetalLB HelmRelease + IP pools
+│   ├── metallb-system/      # MetalLB HelmRelease + IP pools
+│   └── longhorn-system/     # Longhorn HelmRelease
 │
-└── apps/                    # Applications
-    └── openobserve/         # OpenObserve StatefulSet
+└── apps/                    # Applications (organised by namespace)
+    ├── network/
+    │   └── openobserve/     # OpenObserve StatefulSet
+    └── home/
+        └── firefly-iii/     # Firefly III + PostgreSQL (firefly-db)
 
 .github/
 ├── renovate.json            # Renovate configuration
