@@ -44,8 +44,7 @@ spec:
         class: longhorn
         dataSize: 5Gi
       backup:
-        pvc:
-          class: longhorn
+        destination: ""
       configs:
         DBNAME: firefly
         DBUSER: firefly
