@@ -13,7 +13,7 @@ spec:
   wait: true
   interval: 10m
   retryInterval: 1m
-  timeout: 5m
+  timeout: 15m
   dependsOn:
     - name: core
   decryption:
