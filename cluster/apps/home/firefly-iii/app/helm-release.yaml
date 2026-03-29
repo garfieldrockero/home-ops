@@ -8,8 +8,8 @@ spec:
   interval: 5m
   chart:
     spec:
-      chart: firefly-iii
-      version: 1.9.12
+      chart: firefly-iii-stack
+      version: 0.9.1
       sourceRef:
         kind: HelmRepository
         name: firefly-iii-helm
@@ -22,19 +22,6 @@ spec:
     remediation:
       retries: 3
   values:
-    config:
-      existingSecret: firefly-iii-secrets
-
-    service:
-      type: LoadBalancer
-      annotations:
-        metallb.universe.tf/address-pool: "${METALLB_POOL_HOME}"
-        metallb.universe.tf/loadBalancerIPs: "${FIREFLY_LB_IP}"
-
-    persistence:
-      storageClassName: longhorn
-      storage: 2Gi
-
     firefly-db:
       enabled: true
       global:
@@ -44,3 +31,23 @@ spec:
             secretKeys:
               userPasswordKey: DB_PASSWORD
               adminPasswordKey: DB_PASSWORD
+      primary:
+        persistence:
+          storageClass: longhorn
+          size: 5Gi
+
+    firefly-iii:
+      enabled: true
+      config:
+        existingSecret: firefly-iii-secrets
+      service:
+        type: LoadBalancer
+        annotations:
+          metallb.universe.tf/address-pool: "${METALLB_POOL_HOME}"
+          metallb.universe.tf/loadBalancerIPs: "${FIREFLY_LB_IP}"
+      persistence:
+        storageClassName: longhorn
+        storage: 2Gi
+
+    importer:
+      enabled: false
