@@ -32,9 +32,8 @@ spec:
         metallb.universe.tf/loadBalancerIPs: "${FIREFLY_LB_IP}"
 
     persistence:
-      storage:
-        storageClassName: longhorn
-        requests: 2Gi
+      storageClassName: longhorn
+      storage: 2Gi
 
     firefly-db:
       enabled: true
