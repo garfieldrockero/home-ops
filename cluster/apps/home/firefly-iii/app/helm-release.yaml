@@ -80,4 +80,4 @@ spec:
       enabled: true
       config:
         FIREFLY_III_URL: "http://firefly-iii"
-        VANITY_URL: "http://192.168.11.56"
+        VANITY_URL: "http://192.168.11.56:8080"
