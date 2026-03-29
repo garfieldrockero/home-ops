@@ -12,6 +12,12 @@
       "automerge": false
     },
     {
+      "description": "fireflyiii images use version-X.Y.Z tag format",
+      "matchDatasources": ["docker"],
+      "matchPackageNames": ["fireflyiii/core", "fireflyiii/data-importer"],
+      "versioning": "regex:^version-(?<major>\\d+)\\.(?<minor>\\d+)\\.(?<patch>\\d+)$"
+    },
+    {
       "description": "Ignore o2cr.ai registry (not accessible by Renovate)",
       "matchPackagePatterns": ["^o2cr\\.ai/"],
       "enabled": false
