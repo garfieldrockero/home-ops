@@ -41,8 +41,7 @@ spec:
     firefly-db:
       enabled: true
       storage:
-        class: longhorn
-        dataSize: 5Gi
+        existingClaim: firefly-iii-firefly-db-storage-claim
       backup:
         destination: ""
       configs:
