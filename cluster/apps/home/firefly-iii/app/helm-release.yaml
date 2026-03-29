@@ -55,4 +55,4 @@ spec:
         existingSecret: firefly-iii-secrets
 
     importer:
-      enabled: false
+      enabled: true
