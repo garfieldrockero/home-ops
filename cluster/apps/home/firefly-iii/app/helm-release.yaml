@@ -78,6 +78,6 @@ spec:
 
     importer:
       enabled: true
-      config:
-        FIREFLY_III_URL: "http://firefly-iii"
-        VANITY_URL: "http://192.168.11.56"
+      fireflyiii:
+        url: "http://firefly-iii"
+        vanityUrl: "http://192.168.11.56"
