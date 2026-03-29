@@ -37,6 +37,25 @@ spec:
               - op: add
                 path: /metadata/annotations/metallb.universe.tf~1loadBalancerIPs
                 value: "${FIREFLY_LB_IP}"
+              - op: add
+                path: /metadata/annotations/metallb.universe.tf~1allow-shared-ip
+                value: firefly-shared
+          - target:
+              kind: Service
+              name: firefly-iii-importer
+            patch: |
+              - op: replace
+                path: /spec/type
+                value: LoadBalancer
+              - op: add
+                path: /metadata/annotations/metallb.universe.tf~1address-pool
+                value: "${METALLB_POOL_HOME}"
+              - op: add
+                path: /metadata/annotations/metallb.universe.tf~1loadBalancerIPs
+                value: "${FIREFLY_LB_IP}"
+              - op: add
+                path: /metadata/annotations/metallb.universe.tf~1allow-shared-ip
+                value: firefly-shared
   values:
     firefly-db:
       enabled: true
