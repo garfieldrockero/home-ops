@@ -20,6 +20,15 @@
       "datasourceTemplate": "{{datasource}}"
     },
     {
+      "description": "Detect image tags with renovate inline annotations in Helm values",
+      "customType": "regex",
+      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "matchStrings": [
+        "#\\s*renovate:\\s*depName=(?<depName>[^\\s]+)\\s+datasource=(?<datasource>[^\\s]+)\\n\\s+tag:\\s+\"?(?<currentValue>[^@\"\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
+      ],
+      "datasourceTemplate": "{{datasource}}"
+    },
+    {
       "description": "Detect Helm chart versions in HelmRelease manifests",
       "customType": "regex",
       "fileMatch": ["cluster/.+helm-release\\.ya?ml$"],

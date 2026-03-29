@@ -73,11 +73,17 @@ spec:
 
     firefly-iii:
       enabled: true
+      image:
+        # renovate: depName=fireflyiii/core datasource=docker
+        tag: "version-6.5.6@sha256:3ce45ab0edf57426c544ca8575ba4be74e245c0b7f8f4816067f20896a6b46b0"
       config:
         existingSecret: firefly-iii-secrets
 
     importer:
       enabled: true
+      image:
+        # renovate: depName=fireflyiii/data-importer datasource=docker
+        tag: "version-2.0.0@sha256:725ac2909fc02960cfbc7d866ea7dd576459407701d65f294911104bcd819cd2"
       fireflyiii:
         url: "http://firefly-iii"
       config:
