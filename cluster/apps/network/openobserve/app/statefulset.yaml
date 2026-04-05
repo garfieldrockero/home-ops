@@ -27,7 +27,7 @@ spec:
       containers:
         - name: openobserve
           # renovate: depName=openobserve/openobserve datasource=github-releases
-          image: o2cr.ai/openobserve/openobserve:v0.70.0
+          image: o2cr.ai/openobserve/openobserve:v0.70.3
           env:
             - name: ZO_ROOT_USER_EMAIL
               value: "${ZO_ROOT_USER_EMAIL}"
