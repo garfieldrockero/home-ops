@@ -17,7 +17,7 @@ spec:
       containers:
         - name: browser
           # renovate: depName=dgtlmoon/sockpuppetbrowser datasource=docker
-          image: dgtlmoon/sockpuppetbrowser:0.0.3@sha256:23a7be698216407648b6c78fc55de0411bde550635edc30347373c86a5176fad
+          image: dgtlmoon/sockpuppetbrowser:0.0.3
           securityContext:
             capabilities:
               add:
