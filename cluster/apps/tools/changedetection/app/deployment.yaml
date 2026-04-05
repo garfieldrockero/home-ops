@@ -45,6 +45,10 @@ spec:
               mountPath: /dev/shm
             - name: tmp
               mountPath: /tmp
+            - name: home-chrome
+              mountPath: /home/chrome
+            - name: run
+              mountPath: /run
           livenessProbe:
             tcpSocket:
               port: 3000
@@ -65,6 +69,10 @@ spec:
           emptyDir:
             medium: Memory
             sizeLimit: 1Gi
+        - name: home-chrome
+          emptyDir:
+            medium: Memory
+            sizeLimit: 512Mi
 ---
 apiVersion: v1
 kind: Service
