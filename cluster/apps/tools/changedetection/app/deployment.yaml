@@ -23,7 +23,6 @@ spec:
               add:
                 - SYS_ADMIN
             allowPrivilegeEscalation: false
-            readOnlyRootFilesystem: true
           env:
             - name: SCREEN_WIDTH
               value: "1920"
