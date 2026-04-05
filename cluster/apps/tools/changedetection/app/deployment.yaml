@@ -47,8 +47,6 @@ spec:
               mountPath: /tmp
             - name: home-chrome
               mountPath: /home/chrome
-            - name: run
-              mountPath: /run
           livenessProbe:
             tcpSocket:
               port: 3000
