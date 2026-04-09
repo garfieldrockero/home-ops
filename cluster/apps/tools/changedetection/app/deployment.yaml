@@ -14,6 +14,15 @@ spec:
       labels:
         app: browser-sockpuppet
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.homelab/cpu-tier
+                    operator: In
+                    values:
+                      - high
       containers:
         - name: browser
           # renovate: depName=dgtlmoon/sockpuppetbrowser datasource=docker
@@ -120,6 +129,15 @@ spec:
       labels:
         app: changedetection
     spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: node.homelab/cpu-tier
+                    operator: In
+                    values:
+                      - high
       containers:
         - name: changedetection
           # renovate: depName=ghcr.io/dgtlmoon/changedetection.io datasource=docker
