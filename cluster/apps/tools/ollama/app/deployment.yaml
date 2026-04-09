@@ -19,10 +19,10 @@ spec:
           requiredDuringSchedulingIgnoredDuringExecution:
             nodeSelectorTerms:
               - matchExpressions:
-                  - key: node.homelab/cpu-tier
+                  - key: node.homelab/role
                     operator: In
                     values:
-                      - high
+                      - master
       securityContext:
         fsGroup: 0
         runAsUser: 0
@@ -56,7 +56,7 @@ spec:
               memory: 1Gi
             limits:
               cpu: "8"
-              memory: 10Gi
+              memory: 2Gi
           volumeMounts:
             - name: models
               mountPath: /root/.ollama
