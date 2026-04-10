@@ -4,3 +4,4 @@ resources:
   - metallb.yaml
   - longhorn.yaml
   - firefly-iii.yaml
+  - cnpg.yaml

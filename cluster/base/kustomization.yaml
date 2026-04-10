@@ -3,6 +3,7 @@ kind: Kustomization
 resources:
   - flux-system
   - repositories/helm
+  - repositories/oci
   - cluster-configs.yaml
   - core.yaml
   - apps.yaml

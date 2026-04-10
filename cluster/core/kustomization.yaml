@@ -5,3 +5,4 @@ resources:
   - cluster-configs
   - metallb-system
   - longhorn-system
+  - cnpg-system
