@@ -28,7 +28,7 @@ spec:
         - CREATE EXTENSION IF NOT EXISTS vchord CASCADE;
         - CREATE EXTENSION IF NOT EXISTS earthdistance CASCADE;
 
-  enableSuperuserAccess: false
+  enableSuperuserAccess: true
 
   affinity:
     nodeSelector:
