@@ -8,7 +8,7 @@ spec:
   instances: 1
 
   storage:
-    size: 20Gi
+    size: 10Gi
     storageClass: longhorn
 
   # renovate: depName=ghcr.io/tensorchord/cloudnative-vectorchord datasource=docker
