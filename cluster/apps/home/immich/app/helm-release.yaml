@@ -79,11 +79,13 @@ spec:
               node.homelab/cpu-tier: high
             automountServiceAccountToken: false
             securityContext:
-              fsGroup: 1000
+              fsGroup: 3002
           containers:
             main:
               securityContext:
                 allowPrivilegeEscalation: false
+                runAsUser: 3002
+                runAsGroup: 3002
                 capabilities:
                   drop: ["ALL"]
               resources:
@@ -103,11 +105,13 @@ spec:
               node.homelab/cpu-tier: high
             automountServiceAccountToken: false
             securityContext:
-              fsGroup: 1000
+              fsGroup: 3002
           containers:
             main:
               securityContext:
                 allowPrivilegeEscalation: false
+                runAsUser: 3002
+                runAsGroup: 3002
                 capabilities:
                   drop: ["ALL"]
               resources:
