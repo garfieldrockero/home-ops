@@ -57,13 +57,13 @@ spec:
               DB_USERNAME:
                 valueFrom:
                   secretKeyRef:
-                    name: immich-secrets
-                    key: DB_USERNAME
+                    name: immich-postgres-superuser
+                    key: username
               DB_PASSWORD:
                 valueFrom:
                   secretKeyRef:
-                    name: immich-secrets
-                    key: DB_PASSWORD
+                    name: immich-postgres-superuser
+                    key: password
 
     immich:
       persistence:
