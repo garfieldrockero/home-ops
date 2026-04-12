@@ -10,7 +10,6 @@ spec:
     spec:
       chart: cert-manager
       version: "v1.20.0"
-      digest: "sha256:20755754fdb4165acf9339fc2dd32db5df052b9f6981174b18e488eec042bded"
       sourceRef:
         kind: HelmRepository
         name: cert-manager

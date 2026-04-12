@@ -31,9 +31,15 @@ This repository contains the declarative configuration for my home Kubernetes cl
 | [k3s](https://k3s.io/) | Lightweight Kubernetes distribution |
 | [Flux v2](https://fluxcd.io/) | GitOps operator — watches this repo and applies changes |
 | [MetalLB](https://metallb.universe.tf/) | Bare-metal LoadBalancer |
-| [OpenObserve](https://openobserve.ai/) | Observability platform (logs, metrics, traces) |
 | [Longhorn](https://longhorn.io/) | Distributed block storage |
+| [cert-manager](https://cert-manager.io/) | TLS certificate management (Let's Encrypt + Cloudflare DNS) |
+| [CloudNative PG](https://cloudnative-pg.io/) | PostgreSQL operator (CNPG) |
+| [OpenObserve](https://openobserve.ai/) | Observability platform (logs, metrics, traces) |
+| [Immich](https://immich.app/) | Self-hosted photo and video manager |
 | [Firefly III](https://www.firefly-iii.org/) | Personal finance manager |
+| [Ollama](https://ollama.com/) | Local LLM inference |
+| [Changedetection.io](https://changedetection.io/) | Web change monitoring |
+| [Valkey](https://valkey.io/) | In-memory cache (Redis fork, bundled with Immich) |
 | [SOPS](https://github.com/getsops/sops) + [age](https://github.com/FiloSottile/age) | Secrets encryption |
 | [Renovate](https://renovatebot.com/) | Automated dependency updates via k9-renovate-bot |
 
@@ -43,7 +49,10 @@ This repository contains the declarative configuration for my home Kubernetes cl
 cluster/
 ├── base/                    # Flux entrypoints
 │   ├── flux-system/         # Auto-generated Flux components (do not edit)
-│   ├── repositories/helm/   # HelmRepository sources
+│   ├── repositories/
+│   │   ├── helm/            # HelmRepository sources
+│   │   ├── git/             # GitRepository sources
+│   │   └── oci/             # OCIRepository sources
 │   ├── cluster-configs.yaml # Kustomization for cluster config (runs first)
 │   ├── core.yaml            # Kustomization for core services
 │   └── apps.yaml            # Kustomization for applications
@@ -52,13 +61,19 @@ cluster/
 │   ├── cluster-configs/     # ConfigMap + SOPS-encrypted secrets
 │   ├── namespaces/          # Pre-created namespaces
 │   ├── metallb-system/      # MetalLB HelmRelease + IP pools
-│   └── longhorn-system/     # Longhorn HelmRelease
+│   ├── longhorn-system/     # Longhorn HelmRelease
+│   ├── cnpg-system/         # CloudNative PG operator HelmRelease
+│   └── cert-manager/        # cert-manager HelmRelease
 │
 └── apps/                    # Applications (organised by namespace)
     ├── network/
     │   └── openobserve/     # OpenObserve StatefulSet
-    └── home/
-        └── firefly-iii/     # Firefly III + PostgreSQL (firefly-db)
+    ├── home/
+    │   ├── firefly-iii/     # Firefly III + data importer (firefly-db PostgreSQL)
+    │   └── immich/          # Immich + CNPG cluster + Valkey cache
+    └── tools/
+        ├── ollama/          # Ollama LLM inference
+        └── changedetection/ # Changedetection.io
 
 .github/
 ├── renovate.json            # Renovate configuration
