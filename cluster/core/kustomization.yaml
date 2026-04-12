@@ -6,3 +6,4 @@ resources:
   - metallb-system
   - longhorn-system
   - cnpg-system
+  - cert-manager

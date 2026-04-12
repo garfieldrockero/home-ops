@@ -6,3 +6,4 @@ resources:
   - longhorn-system.yaml
   - home.yaml
   - cnpg-system.yaml
+  - cert-manager.yaml
