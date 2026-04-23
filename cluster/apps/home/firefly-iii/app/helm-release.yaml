@@ -75,7 +75,7 @@ spec:
       enabled: true
       image:
         # renovate: depName=fireflyiii/core datasource=docker
-        tag: "version-6.5.9@sha256:fe4ecec4c2ba2b2978a32b3defaf270407f9fddf0e789a18648121ab84bb68d2"
+        tag: "version-6.6.1@sha256:fe4ecec4c2ba2b2978a32b3defaf270407f9fddf0e789a18648121ab84bb68d2"
       config:
         existingSecret: firefly-iii-secrets
 
