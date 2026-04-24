@@ -30,7 +30,7 @@ spec:
       containers:
         - name: ollama
           # renovate: depName=ollama/ollama datasource=docker
-          image: ollama/ollama:0.20.0@sha256:6eb118589b440c05b62e7e5e73a0bdf7240f6c79d968e60e6fd49f919eee5733
+          image: ollama/ollama:0.21.2@sha256:2038a264392af4d21f7f14e1568e8dd9aa0f2bd0f31d7d9a59a8cca1e9829663
           securityContext:
             allowPrivilegeEscalation: false
             seccompProfile:
