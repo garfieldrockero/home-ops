@@ -14,6 +14,7 @@ spec:
       labels:
         app: browser-sockpuppet
     spec:
+      automountServiceAccountToken: false
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -29,8 +30,8 @@ spec:
           image: dgtlmoon/sockpuppetbrowser:0.0.3@sha256:23a7be698216407648b6c78fc55de0411bde550635edc30347373c86a5176fad
           securityContext:
             capabilities:
-              add:
-                - SYS_ADMIN
+              drop: ["ALL"]
+              add: ["SYS_ADMIN"]
             allowPrivilegeEscalation: false
           env:
             - name: SCREEN_WIDTH
@@ -40,14 +41,14 @@ spec:
             - name: SCREEN_DEPTH
               value: "16"
             - name: MAX_CONCURRENT_CHROME_PROCESSES
-              value: "10"
+              value: "4"
           resources:
             requests:
               cpu: 250m
-              memory: 512Mi
+              memory: 256Mi
             limits:
               cpu: "1"
-              memory: 4Gi
+              memory: 2Gi
           volumeMounts:
             - name: shm
               mountPath: /dev/shm
@@ -69,15 +70,15 @@ spec:
         - name: shm
           emptyDir:
             medium: Memory
-            sizeLimit: 2Gi
+            sizeLimit: 1Gi
         - name: tmp
           emptyDir:
             medium: Memory
-            sizeLimit: 1Gi
+            sizeLimit: 512Mi
         - name: home-chrome
           emptyDir:
             medium: Memory
-            sizeLimit: 512Mi
+            sizeLimit: 256Mi
 ---
 apiVersion: v1
 kind: Service
@@ -128,6 +129,7 @@ spec:
       labels:
         app: changedetection
     spec:
+      automountServiceAccountToken: false
       affinity:
         nodeAffinity:
           requiredDuringSchedulingIgnoredDuringExecution:
@@ -144,6 +146,8 @@ spec:
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]
             seccompProfile:
               type: RuntimeDefault
           env:
