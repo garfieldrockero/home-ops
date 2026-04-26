@@ -20,6 +20,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${ADGUARD1_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 80
     protocol: TCP
@@ -45,6 +47,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${ADGUARD_SECONDARY_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 80
     protocol: TCP
@@ -70,6 +74,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${DOCKER_HOST_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 1242
     protocol: TCP
@@ -95,6 +101,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${GLANCE_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 8080
     protocol: TCP
@@ -120,6 +128,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${HA_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 8123
     protocol: TCP
@@ -145,6 +155,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${IMPRESORA_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 80
     protocol: TCP
@@ -170,6 +182,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${JETKVM_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 80
     protocol: TCP
@@ -195,6 +209,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${MEALIE_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 9000
     protocol: TCP
@@ -220,6 +236,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${N8N_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 5678
     protocol: TCP
@@ -245,6 +263,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${NEXTCLOUD_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 11000
     protocol: TCP
@@ -270,6 +290,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${DOCKER_HOST_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 81
     protocol: TCP
@@ -295,6 +317,8 @@ addressType: IPv4
 endpoints:
   - addresses:
       - "${ZIGBEE2MQTT_IP}"
+    conditions:
+      ready: true
 ports:
   - port: 8080
     protocol: TCP
