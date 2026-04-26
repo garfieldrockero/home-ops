@@ -6,3 +6,6 @@ resources:
   - cloudflare-api-token.sops.yaml
   - cluster-issuer.yaml
   - wildcard-certificate.yaml
+  - internal-ca.yaml
+  - trust-manager.yaml
+  - internal-ca-bundle.yaml

@@ -1,0 +1,41 @@
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: selfsigned
+spec:
+  selfSigned: {}
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: internal-ca
+  namespace: cert-manager
+spec:
+  isCA: true
+  duration: 87600h
+  renewBefore: 720h
+  commonName: internal-ca
+  subject:
+    organizations:
+      - home-ops
+    organizationalUnits:
+      - internal-ca
+  secretName: internal-ca
+  privateKey:
+    algorithm: ECDSA
+    size: 256
+  issuerRef:
+    name: selfsigned
+    kind: ClusterIssuer
+---
+# Para rotar la CA: recrear el ClusterIssuer selfsigned si fue eliminado,
+# renegerar el Certificate internal-ca, redistribuir el cert a los servicios
+# y actualizar rootCAsSecrets en el ServersTransport de Traefik.
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: internal-ca
+spec:
+  ca:
+    secretName: internal-ca
