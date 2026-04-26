@@ -184,8 +184,6 @@ spec:
   routes:
     - match: Host(`nginx.${CLUSTER_DOMAIN}`)
       kind: Rule
-      middlewares:
-        - name: basic-auth
       services:
         - name: nginx
           port: 81
