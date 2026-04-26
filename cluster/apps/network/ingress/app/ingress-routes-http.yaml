@@ -1,0 +1,279 @@
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: adguard1
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`adguard1.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: adguard1
+          port: 80
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: adguard2
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`adguard2.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: adguard2
+          port: 80
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: asf
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`asf.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: asf
+          port: 1242
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: glance
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`glance.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: glance
+          port: 8080
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: ha
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`ha.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      services:
+        - name: ha
+          port: 8123
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: impresora
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`impresora.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: impresora
+          port: 80
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: jetkvm
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`jetkvm.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: jetkvm
+          port: 80
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: mealie
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`mealie.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      services:
+        - name: mealie
+          port: 9000
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: n8n
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`n8n.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: n8n
+          port: 5678
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nextcloud
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`nextcloud.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      services:
+        - name: nextcloud
+          port: 11000
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: nginx
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`nginx.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: nginx
+          port: 81
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: zigbee2mqtt
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`zigbee2mqtt.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      middlewares:
+        - name: basic-auth
+      services:
+        - name: zigbee2mqtt
+          port: 8080
+  tls: {}
+---
+# --- Servicios en el clúster k8s (cross-namespace) ---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: changedetector
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`changedetector.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      services:
+        - name: changedetection
+          namespace: tools
+          port: 5000
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: firefly
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`firefly.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      services:
+        - name: firefly-iii
+          namespace: home
+          port: 80
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: fireflyimporter
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`fireflyimporter.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      services:
+        - name: firefly-iii-importer
+          namespace: home
+          port: 8080
+  tls: {}
+---
+apiVersion: traefik.io/v1alpha1
+kind: IngressRoute
+metadata:
+  name: immich
+  namespace: network
+spec:
+  entryPoints:
+    - websecure
+  routes:
+    - match: Host(`immich.${CLUSTER_DOMAIN}`)
+      kind: Rule
+      services:
+        - name: immich-server
+          namespace: home
+          port: 2283
+  tls: {}

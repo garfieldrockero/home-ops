@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Secret
+metadata:
+    name: traefik-basic-auth
+    namespace: network
+type: Opaque
+stringData:
+    users: ENC[AES256_GCM,data:smhoXqoEimuanOaWlYVPzWSw9v3D6cnO6GtLWWy25XFKSZNLfWeMcaGhC1WUAg==,iv:fYZG/RAyniQ1/EkPjXnT1U5U//sOdiv3JIdEsYikd0E=,tag:KGMwtvP0/F0Eg3UzbKhZDg==,type:str]
+sops:
+    age:
+        - recipient: age1gn9vptm6up8yepw4k2wugpa5wjenmuxejh6ulkww0pkh4c6r24tqajsspe
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA2Y09NSGxDdXQweVFGOWxB
+            VFdGTDEyYWJyNnhBc0hOS0xlQk9HMWxUUHg0Cll6RnB5T0o2SEkzNUx3cU13QUt5
+            Y0VwQnVzQkl3WkhhOXRHZTFoQm9RTmsKLS0tIFZlcncyam1FQy9UaWdmMi9KV094
+            aWlST0JHblNjWkJ2djcybVpCMVBhc3MKtbFzkp3+2hbV/9n6nbTr02pLxtgYBUPs
+            Wcb0ybOtCZQyXSzBmLW/Yfx7T+aFexvFtBsktpcHl0rwG5QMXtT64Q==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2026-04-26T17:16:15Z"
+    mac: ENC[AES256_GCM,data:LFoTqZxnAVoNf/YHSasMHY2a6fa+m+DTrn/n8rEFSNcvSY0j/1mEdga3b8It8R8pOCNDSpwbkX/nC4Lywpwj7ziFcDD7NslKBozfZ+iljpYqYIx9OKifTQXIMKGUg4+b4AVIoRBTysEwZOi9mg1KQoV9tpccKaWnUtDOb5kRBxM=,iv:Z8YZ7TPptVUPhvElVjkq0keLtXrcjeZP5UAA4TKo5HQ=,tag:qOZ9yk8sn4hZR9SAKCIVOg==,type:str]
+    encrypted_regex: ^(data|stringData)$
+    version: 3.12.1

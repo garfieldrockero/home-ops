@@ -1,4 +1,7 @@
 ---
+# Usado en IngressRoutes de backends HTTPS externos (PVE, TrueNAS, OPNsense, etc.)
+# que tengan instalado el certificado de la CA interna (internal-ca).
+# Referenciar con: services[].serversTransport: internal-ca-transport
 apiVersion: traefik.io/v1alpha1
 kind: ServersTransport
 metadata:

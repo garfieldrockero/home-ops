@@ -4,3 +4,7 @@ kind: Kustomization
 resources:
   - internal-ca-bundle.yaml
   - servers-transport.yaml
+  - middleware-basic-auth.yaml
+  - traefik-basic-auth.sops.yaml
+  - external-http-services.yaml
+  - ingress-routes-http.yaml

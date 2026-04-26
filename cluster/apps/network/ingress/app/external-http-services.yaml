@@ -1,0 +1,300 @@
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard1
+  namespace: network
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: adguard1
+  namespace: network
+  labels:
+    kubernetes.io/service-name: adguard1
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${ADGUARD1_IP}"
+ports:
+  - port: 80
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: adguard2
+  namespace: network
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: adguard2
+  namespace: network
+  labels:
+    kubernetes.io/service-name: adguard2
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${ADGUARD_SECONDARY_IP}"
+ports:
+  - port: 80
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: asf
+  namespace: network
+spec:
+  ports:
+    - port: 1242
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: asf
+  namespace: network
+  labels:
+    kubernetes.io/service-name: asf
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${DOCKER_HOST_IP}"
+ports:
+  - port: 1242
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: glance
+  namespace: network
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: glance
+  namespace: network
+  labels:
+    kubernetes.io/service-name: glance
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${GLANCE_IP}"
+ports:
+  - port: 8080
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ha
+  namespace: network
+spec:
+  ports:
+    - port: 8123
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: ha
+  namespace: network
+  labels:
+    kubernetes.io/service-name: ha
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${HA_IP}"
+ports:
+  - port: 8123
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: impresora
+  namespace: network
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: impresora
+  namespace: network
+  labels:
+    kubernetes.io/service-name: impresora
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${IMPRESORA_IP}"
+ports:
+  - port: 80
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: jetkvm
+  namespace: network
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: jetkvm
+  namespace: network
+  labels:
+    kubernetes.io/service-name: jetkvm
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${JETKVM_IP}"
+ports:
+  - port: 80
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mealie
+  namespace: network
+spec:
+  ports:
+    - port: 9000
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: mealie
+  namespace: network
+  labels:
+    kubernetes.io/service-name: mealie
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${MEALIE_IP}"
+ports:
+  - port: 9000
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: n8n
+  namespace: network
+spec:
+  ports:
+    - port: 5678
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: n8n
+  namespace: network
+  labels:
+    kubernetes.io/service-name: n8n
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${N8N_IP}"
+ports:
+  - port: 5678
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nextcloud
+  namespace: network
+spec:
+  ports:
+    - port: 11000
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: nextcloud
+  namespace: network
+  labels:
+    kubernetes.io/service-name: nextcloud
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${NEXTCLOUD_IP}"
+ports:
+  - port: 11000
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx
+  namespace: network
+spec:
+  ports:
+    - port: 81
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: nginx
+  namespace: network
+  labels:
+    kubernetes.io/service-name: nginx
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${DOCKER_HOST_IP}"
+ports:
+  - port: 81
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: zigbee2mqtt
+  namespace: network
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: zigbee2mqtt
+  namespace: network
+  labels:
+    kubernetes.io/service-name: zigbee2mqtt
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${ZIGBEE2MQTT_IP}"
+ports:
+  - port: 8080
+    protocol: TCP
