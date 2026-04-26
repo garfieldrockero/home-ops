@@ -8,4 +8,3 @@ resources:
   - wildcard-certificate.yaml
   - internal-ca.yaml
   - trust-manager.yaml
-  - internal-ca-bundle.yaml
