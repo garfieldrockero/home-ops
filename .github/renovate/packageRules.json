@@ -33,6 +33,12 @@
       "enabled": false
     },
     {
+      "description": "cert-manager: only stable releases, no alpha/beta/RC",
+      "matchDatasources": ["helm"],
+      "matchPackageNames": ["cert-manager"],
+      "allowedVersions": "/^v\\d+\\.\\d+\\.\\d+$/"
+    },
+    {
       "description": "Ollama: only stable CPU releases, no RC or ROCm variants",
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ollama/ollama"],
