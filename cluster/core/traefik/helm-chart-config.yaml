@@ -6,6 +6,10 @@ metadata:
   namespace: kube-system
 spec:
   valuesContent: |-
+    service:
+      annotations:
+        metallb.universe.tf/address-pool: "${METALLB_POOL_HOME}"
+        metallb.universe.tf/loadBalancerIPs: "${TRAEFIK_LB_IP}"
     providers:
       kubernetesCRD:
         # Necesario para que IngressRoutes en namespace `network` referencien
