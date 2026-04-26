@@ -1,0 +1,15 @@
+---
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  name: pve-tls
+  namespace: network
+spec:
+  secretName: pve-tls
+  duration: 8760h
+  renewBefore: 720h
+  dnsNames:
+    - pve.${CLUSTER_DOMAIN}
+  issuerRef:
+    name: internal-ca
+    kind: ClusterIssuer

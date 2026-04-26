@@ -7,4 +7,6 @@ resources:
   - middleware-basic-auth.yaml
   - traefik-basic-auth.sops.yaml
   - external-http-services.yaml
+  - external-https-services.yaml
+  - external-https-certs.yaml
   - ingress-routes-http.yaml
