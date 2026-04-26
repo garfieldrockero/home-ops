@@ -34,7 +34,7 @@
     },
     {
       "description": "cert-manager: only stable releases, no alpha/beta/RC",
-      "matchDatasources": ["helm"],
+      "matchDatasources": ["docker"],
       "matchPackageNames": ["cert-manager"],
       "allowedVersions": "/^v\\d+\\.\\d+\\.\\d+$/"
     },
