@@ -1,0 +1,15 @@
+---
+apiVersion: helm.cattle.io/v1
+kind: HelmChartConfig
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  valuesContent: |-
+    providers:
+      kubernetesCRD:
+        # Necesario para que IngressRoutes en namespace `network` referencien
+        # ServersTransport y servicios de otros namespaces (home, tools, network)
+        allowCrossNamespace: true
+      kubernetesIngress:
+        allowCrossNamespace: true
