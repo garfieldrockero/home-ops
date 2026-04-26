@@ -10,3 +10,4 @@ resources:
   - external-https-services.yaml
   - external-https-certs.yaml
   - ingress-routes-http.yaml
+  - ingress-routes-https.yaml
