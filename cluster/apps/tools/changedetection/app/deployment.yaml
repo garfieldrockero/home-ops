@@ -41,7 +41,7 @@ spec:
             - name: SCREEN_DEPTH
               value: "16"
             - name: MAX_CONCURRENT_CHROME_PROCESSES
-              value: "4"
+              value: "6"
           resources:
             requests:
               cpu: 250m
