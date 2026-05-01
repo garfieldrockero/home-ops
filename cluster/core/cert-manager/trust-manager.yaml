@@ -28,5 +28,5 @@ spec:
   values:
     secretTargets:
       enabled: true
-      authorizedSecretsForServiceAccounts:
-        - trust-manager
+      authorizedSecrets:
+        - internal-ca-bundle
