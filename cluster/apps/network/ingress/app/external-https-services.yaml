@@ -25,3 +25,111 @@ endpoints:
 ports:
   - port: 8006
     protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: truenas
+  namespace: network
+spec:
+  ports:
+    - port: 443
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: truenas
+  namespace: network
+  labels:
+    kubernetes.io/service-name: truenas
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${NAS_SERVER}"
+    conditions:
+      ready: true
+ports:
+  - port: 443
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: portainer
+  namespace: network
+spec:
+  ports:
+    - port: 9443
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: portainer
+  namespace: network
+  labels:
+    kubernetes.io/service-name: portainer
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${DOCKER_HOST_IP}"
+    conditions:
+      ready: true
+ports:
+  - port: 9443
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: opnsense
+  namespace: network
+spec:
+  ports:
+    - port: 443
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: opnsense
+  namespace: network
+  labels:
+    kubernetes.io/service-name: opnsense
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${OPNSENSE_IP}"
+    conditions:
+      ready: true
+ports:
+  - port: 443
+    protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: unifi
+  namespace: network
+spec:
+  ports:
+    - port: 11443
+      protocol: TCP
+---
+apiVersion: discovery.k8s.io/v1
+kind: EndpointSlice
+metadata:
+  name: unifi
+  namespace: network
+  labels:
+    kubernetes.io/service-name: unifi
+addressType: IPv4
+endpoints:
+  - addresses:
+      - "${UNIFI_IP}"
+    conditions:
+      ready: true
+ports:
+  - port: 11443
+    protocol: TCP
