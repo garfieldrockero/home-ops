@@ -10,6 +10,8 @@ spec:
   renewBefore: 720h
   dnsNames:
     - pve.${CLUSTER_DOMAIN}
+  ipAddresses:
+    - ${PVE_IP}
   issuerRef:
     name: internal-ca
     kind: ClusterIssuer
