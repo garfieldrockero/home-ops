@@ -68,19 +68,6 @@ spec:
         metallb.io/loadBalancerIPs: "${TRAEFIK_LB_IP}"
 
     affinity:
-      nodeAffinity:
-        requiredDuringSchedulingIgnoredDuringExecution:
-          nodeSelectorTerms:
-            - matchExpressions:
-                - key: node.homelab/role
-                  operator: In
-                  values:
-                    - master
-            - matchExpressions:
-                - key: node.homelab/cpu-tier
-                  operator: In
-                  values:
-                    - low
       podAntiAffinity:
         requiredDuringSchedulingIgnoredDuringExecution:
           - labelSelector:
