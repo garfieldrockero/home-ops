@@ -1,0 +1,80 @@
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: traefik
+  namespace: kube-system
+spec:
+  interval: 15m
+  chart:
+    spec:
+      chart: traefik
+      # renovate: depName=traefik/traefik datasource=helm
+      version: "39.0.9"
+      sourceRef:
+        kind: HelmRepository
+        name: traefik
+        namespace: flux-system
+  install:
+    createNamespace: false
+    remediation:
+      retries: 3
+  upgrade:
+    remediation:
+      retries: 3
+  values:
+    deployment:
+      replicas: 2
+      podAnnotations:
+        prometheus.io/port: "8082"
+        prometheus.io/scrape: "true"
+
+    providers:
+      kubernetesCRD:
+        allowCrossNamespace: true
+      kubernetesIngress:
+        publishedService:
+          enabled: true
+
+    priorityClassName: "system-cluster-critical"
+
+    tolerations:
+      - key: "CriticalAddonsOnly"
+        operator: "Exists"
+      - key: "node-role.kubernetes.io/control-plane"
+        operator: "Exists"
+        effect: "NoSchedule"
+
+    service:
+      ipFamilyPolicy: "PreferDualStack"
+      annotations:
+        metallb.universe.tf/address-pool: "${METALLB_POOL_HOME}"
+        metallb.universe.tf/loadBalancerIPs: "${TRAEFIK_LB_IP}"
+
+    affinity:
+      nodeAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: node.homelab/role
+                  operator: In
+                  values:
+                    - master
+            - matchExpressions:
+                - key: node.homelab/cpu-tier
+                  operator: In
+                  values:
+                    - low
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+                - key: app.kubernetes.io/name
+                  operator: In
+                  values:
+                    - traefik
+            topologyKey: kubernetes.io/hostname
+
+    ingressRoute:
+      dashboard:
+        enabled: false

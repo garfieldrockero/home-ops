@@ -5,3 +5,4 @@ resources:
   - longhorn.yaml
   - firefly-iii.yaml
   - cnpg.yaml
+  - traefik.yaml
