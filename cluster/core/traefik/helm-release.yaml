@@ -25,10 +25,9 @@ spec:
   values:
     deployment:
       replicas: 2
-
-    podAnnotations:
-      prometheus.io/port: "8082"
-      prometheus.io/scrape: "true"
+      podAnnotations:
+        prometheus.io/port: "8082"
+        prometheus.io/scrape: "true"
 
     providers:
       kubernetesCRD:
@@ -55,11 +54,12 @@ spec:
 
     ports:
       web:
-        redirections:
-          entryPoint:
-            to: websecure
-            scheme: https
-            permanent: true
+        http:
+          redirections:
+            entryPoint:
+              to: websecure
+              scheme: https
+              permanent: true
 
     service:
       ipFamilyPolicy: "PreferDualStack"
