@@ -2,3 +2,5 @@
 *.agekey
 CLAUDE.md
 .claude/
+opencode.json
+.opencode/
