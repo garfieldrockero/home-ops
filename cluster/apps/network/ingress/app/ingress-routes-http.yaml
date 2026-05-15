@@ -82,6 +82,8 @@ spec:
   routes:
     - match: Host(`ha.${CLUSTER_DOMAIN}`)
       kind: Rule
+      middlewares:
+        - name: ha-streaming
       services:
         - name: ha
           port: 8123

@@ -6,6 +6,7 @@ resources:
   - internal-ca-bundle.yaml
   - servers-transport.yaml
   - middleware-basic-auth.yaml
+  - middleware-ha-streaming.yaml
   - traefik-basic-auth.sops.yaml
   - external-http-services.yaml
   - external-https-services.yaml
