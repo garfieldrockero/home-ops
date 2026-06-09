@@ -23,6 +23,13 @@
     "prEditedNotification",
     "prIgnoreNotification"
   ],
+  "osvVulnerabilityAlerts": true,
+  "vulnerabilityAlerts": {
+    "labels": ["type/security"],
+    "automerge": false
+  },
+  "minimumReleaseAge": "3 days",
+  "internalChecksFilter": "strict",
   "rebaseWhen": "auto",
   "recreateWhen": "auto",
   "ignorePaths": [

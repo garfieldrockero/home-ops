@@ -20,6 +20,10 @@
     {
       "matchDatasources": ["docker"],
       "labels": ["renovate/docker"]
+    },
+    {
+      "matchCategories": ["security"],
+      "labels": ["type/security"]
     }
   ]
 }

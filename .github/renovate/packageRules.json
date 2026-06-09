@@ -12,6 +12,16 @@
       "automerge": false
     },
     {
+      "description": "Minor updates: wait 7 days before suggesting",
+      "matchUpdateTypes": ["minor"],
+      "minimumReleaseAge": "7 days"
+    },
+    {
+      "description": "Major updates: wait 14 days before suggesting",
+      "matchUpdateTypes": ["major"],
+      "minimumReleaseAge": "14 days"
+    },
+    {
       "description": "fireflyiii images use version-X.Y.Z tag format",
       "matchDatasources": ["docker"],
       "matchPackageNames": ["fireflyiii/core", "fireflyiii/data-importer"],
