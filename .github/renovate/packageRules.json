@@ -43,6 +43,12 @@
       "matchDatasources": ["docker"],
       "matchPackageNames": ["ollama/ollama"],
       "allowedVersions": "/^\\d+\\.\\d+\\.\\d+$/"
+    },
+    {
+      "description": "Flux controllers: only stable releases, no alpha/beta/RC",
+      "matchDatasources": ["docker"],
+      "matchPackagePatterns": ["^ghcr\\.io/fluxcd/"],
+      "allowedVersions": "/^v\\d+\\.\\d+\\.\\d+$/"
     }
   ]
 }
