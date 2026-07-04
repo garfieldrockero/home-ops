@@ -41,14 +41,14 @@ spec:
             - name: SCREEN_DEPTH
               value: "16"
             - name: MAX_CONCURRENT_CHROME_PROCESSES
-              value: "6"
+              value: "3"
           resources:
             requests:
-              cpu: 250m
-              memory: 256Mi
+              cpu: 500m
+              memory: 512Mi
             limits:
-              cpu: "1"
-              memory: 2Gi
+              cpu: "2"
+              memory: 4Gi
           volumeMounts:
             - name: shm
               mountPath: /dev/shm
@@ -57,10 +57,14 @@ spec:
             - name: home-chrome
               mountPath: /home/chrome
           livenessProbe:
-            tcpSocket:
-              port: 3000
-            initialDelaySeconds: 15
+            exec:
+              command:
+                - sh
+                - -c
+                - "pgrep -f 'chrome|chromium' > /dev/null 2>&1 || test $(cat /tmp/active_count 2>/dev/null || echo 0) -le 0"
+            initialDelaySeconds: 30
             periodSeconds: 30
+            failureThreshold: 3
           readinessProbe:
             tcpSocket:
               port: 3000
@@ -70,15 +74,15 @@ spec:
         - name: shm
           emptyDir:
             medium: Memory
-            sizeLimit: 1Gi
+            sizeLimit: 2Gi
         - name: tmp
           emptyDir:
             medium: Memory
-            sizeLimit: 512Mi
+            sizeLimit: 1Gi
         - name: home-chrome
           emptyDir:
             medium: Memory
-            sizeLimit: 256Mi
+            sizeLimit: 512Mi
 ---
 apiVersion: v1
 kind: Service
