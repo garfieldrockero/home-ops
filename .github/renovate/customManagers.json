@@ -4,7 +4,10 @@
     {
       "description": "Detect container images in Kubernetes manifests",
       "customType": "regex",
-      "fileMatch": ["cluster/(?!base/flux-system/).+\\.ya?ml$"],
+      "managerFilePatterns": [
+        "/^cluster/(apps|core)/.+\\.ya?ml$/",
+        "/^cluster/base/repositories/.+\\.ya?ml$/"
+      ],
       "matchStrings": [
         "image:\\s+(?<depName>[^:]+):(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
       ],
@@ -13,7 +16,7 @@
     {
       "description": "Detect images with renovate inline annotations (github-releases)",
       "customType": "regex",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "managerFilePatterns": ["/^cluster/.+\\.ya?ml$/"],
       "matchStrings": [
         "#\\s*renovate:\\s*depName=(?<depName>[^\\s]+)\\s+datasource=(?<datasource>[^\\s]+)\\n\\s+image:\\s+[^:]+:(?<currentValue>[^@\\s]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
       ],
@@ -22,7 +25,7 @@
     {
       "description": "Detect image tags with renovate inline annotations in Helm values",
       "customType": "regex",
-      "fileMatch": ["cluster/.+\\.ya?ml$"],
+      "managerFilePatterns": ["/^cluster/.+\\.ya?ml$/"],
       "matchStrings": [
         "#\\s*renovate:\\s*depName=(?<depName>[^\\s]+)\\s+datasource=(?<datasource>[^\\s]+)(?:\\s*\\n\\s+|\\s+)tag:\\s+[\"']?(?<currentValue>[^\"'\\s@]+)"
       ],
