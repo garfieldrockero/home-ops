@@ -29,7 +29,7 @@
     "automerge": false
   },
   "minimumReleaseAge": "3 days",
-  "internalChecksFilter": "strict",
+  "internalChecksFilter": "flexible",
   "rebaseWhen": "auto",
   "recreateWhen": "auto",
   "ignorePaths": [
