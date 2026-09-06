@@ -27,7 +27,7 @@
       "customType": "regex",
       "managerFilePatterns": ["/^cluster/.+\\.ya?ml$/"],
       "matchStrings": [
-        "#\\s*renovate:\\s*depName=(?<depName>[^\\s]+)\\s+datasource=(?<datasource>[^\\s]+)(?:\\s*\\n\\s+|\\s+)tag:\\s+[\"']?(?<currentValue>[^\"'\\s@]+)"
+        "#\\s*renovate:\\s*depName=(?<depName>[^\\s]+)\\s+datasource=(?<datasource>[^\\s]+)(?:\\s*\\n\\s+|\\s+)tag:\\s+[\"']?(?<currentValue>[^\"'\\s@]+)(?:@(?<currentDigest>sha256:[a-f0-9]+))?"
       ],
       "datasourceTemplate": "{{datasource}}"
     }
