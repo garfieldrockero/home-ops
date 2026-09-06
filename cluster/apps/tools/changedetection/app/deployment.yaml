@@ -57,11 +57,8 @@ spec:
             - name: home-chrome
               mountPath: /home/chrome
           livenessProbe:
-            exec:
-              command:
-                - sh
-                - -c
-                - "pgrep -f 'chrome|chromium' > /dev/null 2>&1 || test $(cat /tmp/active_count 2>/dev/null || echo 0) -le 0"
+            tcpSocket:
+              port: 3000
             initialDelaySeconds: 30
             periodSeconds: 30
             failureThreshold: 3
@@ -125,6 +122,10 @@ metadata:
   namespace: tools
 spec:
   replicas: 1
+  strategy:
+    # El PVC es RWO: con RollingUpdate el pod nuevo espera un volumen que el
+    # viejo todavia tiene montado y el rollout se bloquea.
+    type: Recreate
   selector:
     matchLabels:
       app: changedetection
@@ -157,6 +158,12 @@ spec:
           env:
             - name: PLAYWRIGHT_DRIVER_URL
               value: "ws://browser-sockpuppet:3000/?stealth=1&headful=true&--window-size=1920,1080"
+            # Debe coincidir con MAX_CONCURRENT_CHROME_PROCESSES del navegador:
+            # si hay mas workers que procesos Chrome, los sobrantes agotan el
+            # timeout de 60s de connect_over_cdp y el watch falla.
+            # Fijarlo aqui anula el campo equivalente de la UI sin avisar.
+            - name: FETCH_WORKERS
+              value: "3"
           resources:
             requests:
               cpu: 100m
