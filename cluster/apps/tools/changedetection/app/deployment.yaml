@@ -68,14 +68,17 @@ spec:
             initialDelaySeconds: 10
             periodSeconds: 15
       volumes:
+        # Chrome arranca con --disable-dev-shm-usage, asi que escribe en /tmp
+        # y no en /dev/shm: las capturas de pantalla llenaban el tmpfs pequeno
+        # y fallaban con "Unable to capture screenshot".
         - name: shm
           emptyDir:
             medium: Memory
-            sizeLimit: 2Gi
+            sizeLimit: 512Mi
         - name: tmp
           emptyDir:
             medium: Memory
-            sizeLimit: 1Gi
+            sizeLimit: 2Gi
         - name: home-chrome
           emptyDir:
             medium: Memory
