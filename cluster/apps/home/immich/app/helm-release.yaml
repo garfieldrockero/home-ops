@@ -6,6 +6,10 @@ metadata:
   namespace: home
 spec:
   interval: 5m
+  # v3 tarda varios minutos en estar Ready (migraciones, plugins, verificacion
+  # de integridad). Con el timeout por defecto de 5m Helm revertia el upgrade
+  # antes de que el pod arrancase.
+  timeout: 15m
   chart:
     spec:
       chart: immich
