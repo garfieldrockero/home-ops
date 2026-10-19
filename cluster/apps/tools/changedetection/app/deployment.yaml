@@ -56,12 +56,33 @@ spec:
               mountPath: /tmp
             - name: home-chrome
               mountPath: /home/chrome
+          # sockpuppetbrowser pierde la cuenta de sus Chrome y deja sesiones
+          # huerfanas vivas durante semanas; con la memoria agotada los Chrome
+          # nuevos no arrancan en 20s y el websocket se cierra con code=1000.
+          # El puerto 3000 sigue abierto, asi que un tcpSocket no lo detecta:
+          # se reinicia si algun chromium lleva vivo mas de 1h.
           livenessProbe:
-            tcpSocket:
-              port: 3000
-            initialDelaySeconds: 30
-            periodSeconds: 30
-            failureThreshold: 3
+            exec:
+              command:
+                - python3
+                - -c
+                - |
+                  import os, sys
+                  hz = os.sysconf("SC_CLK_TCK")
+                  up = float(open("/proc/uptime").read().split()[0])
+                  for pid in filter(str.isdigit, os.listdir("/proc")):
+                      try:
+                          s = open(f"/proc/{pid}/stat").read()
+                      except OSError:
+                          continue
+                      comm = s[s.index("(") + 1:s.rindex(")")]
+                      start = int(s[s.rindex(")") + 2:].split()[19]) / hz
+                      if comm == "chromium" and up - start > 3600:
+                          sys.exit(1)
+            initialDelaySeconds: 60
+            periodSeconds: 300
+            timeoutSeconds: 10
+            failureThreshold: 1
           readinessProbe:
             tcpSocket:
               port: 3000
