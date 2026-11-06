@@ -171,7 +171,7 @@ spec:
       containers:
         - name: changedetection
           # renovate: depName=ghcr.io/dgtlmoon/changedetection.io datasource=docker
-          image: ghcr.io/dgtlmoon/changedetection.io:0.55.7@sha256:736331d2787f94d3201b64aa641e090f67e28577ba505bd7ba5d7c1841e1e0ca
+          image: ghcr.io/dgtlmoon/changedetection.io:0.70.2@sha256:36ebb3586e9a6b14af6fb488c6e29b60eceb79ee414ecdb6ac2b91dd25b1c7ba
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true
