@@ -83,7 +83,7 @@ spec:
       enabled: true
       image:
         # renovate: depName=fireflyiii/data-importer datasource=docker
-        tag: "version-2.3.2@sha256:186035e61b7cefd448b8cbced15667653ec2c7ae5d5aa0aa9fe7902d09488325"
+        tag: "version-2.3.5@sha256:4e1eebb065196a2d464636dfa388c698ca4ed3fb188619910acb35ff55238d8c"
       fireflyiii:
         url: "http://firefly-iii"
       config:
